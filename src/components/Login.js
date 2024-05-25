@@ -4,19 +4,24 @@ import { checkValidData } from "../utils/validate";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
+  const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
+  const navigate = useNavigate();
   //   const name = useRef(null);
 
   const toggleSignInFrom = () => {
     setIsSignInForm(!isSignInForm);
   };
+
   const handleButtonClick = () => {
     // validate the form data
     const message = checkValidData(
@@ -37,13 +42,22 @@ const Login = () => {
           // Signed up
           const user = userCredential.user;
           console.log(user);
-          // ...
+          updateProfile(user, {
+            displayName: name.current.value, photoURL: "https://example.com/jane-q-user/profile.jpg"
+          }).then(() => {
+            // Profile updated!
+            navigate('/browse')
+
+          }).catch((error) => {
+            // An error occurred
+            setErrorMessage(error.message)
+            // ...
+          });
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setErrorMessage(errorCode + "-" + errorMessage);
-          // ..
         });
     } else {
       // Sign in logic
@@ -56,12 +70,15 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log(user);
+          navigate("/browse");
           // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setErrorMessage(errorCode + "-" + errorMessage);
+          navigate("/");
+
         });
     }
   };
@@ -83,6 +100,7 @@ const Login = () => {
         </h1>
         {!isSignInForm && (
           <input
+          ref={name}
             type="text"
             placeholder="Full Name"
             className="p-3 my-4 w-full bg-gray-600"
