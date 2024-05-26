@@ -14,8 +14,9 @@
  - created our redux store with userSlice
  - Implemented sign out 
  - Update profiles
- - 
-
+ - Bug Fix : if user is not signed in and he go to browser url , it will be redirected to sign page and vice versa
+ - Unsubscribe for event listener in Header
+ - Added constant file for hardcoded values
 
 # Features
  - Login / Sign up 
