@@ -32,6 +32,9 @@
  - TMDB CDN url for image
  - CSS for overlapping 1st list
  - usePopularMovies custom Hook
+ - GPT search Feature
+ - GPT search bar
+ - multi-lingual feature in our app (BONUS)
  
 
 # Features
