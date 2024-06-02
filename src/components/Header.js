@@ -10,7 +10,6 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
-  console.log(user);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -44,7 +43,7 @@ const Header = () => {
       });
   };
   return (
-    <div className="w-full absolute px-4 bg-gradient-to-r from-black z-10 flex justify-between">
+    <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between">
       <img
         className="w-44"
         src={NETFLIX_LOGO}
@@ -57,7 +56,7 @@ const Header = () => {
             src={PHOTO_URL}
             alt="user-icon"
           ></img>
-          <button onClick={handleSignOut} className="font-bold">
+          <button onClick={handleSignOut} className="font-bold text-white">
             (Sign out)
           </button>
         </div>

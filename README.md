@@ -17,6 +17,17 @@
  - Bug Fix : if user is not signed in and he go to browser url , it will be redirected to sign page and vice versa
  - Unsubscribe for event listener in Header
  - Added constant file for hardcoded values
+ - Register TMDB API and get access token
+ - get Data from TMDB now playing movie list
+ - custom hook for now playing movies
+ - create movie slice
+ - update store with movies and date
+ - Planning for Main Container and Secondary container
+ - Fetch Data for Trailer Video
+ - Update store with Trailer Video Data 
+ - Embedded the YTUbe video and make it autoplay and mute
+ - tailwind class to make main container it awesome
+ 
 
 # Features
  - Login / Sign up 
